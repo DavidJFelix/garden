@@ -1,10 +1,10 @@
-FROM node:20-slim@sha256:a0196893dffad1f1a5723a8c817b45681402be549a8f196bf9c93a5bc30628e3 AS builder
+FROM node:22-slim@sha256:4b44c32c9f3118d60977d0dde5f758f63c4f9eac8ddee4275277239ec600950f AS builder
 WORKDIR /usr/src/app
 COPY package.json .
 COPY package-lock.json* .
 RUN npm ci
 
-FROM node:20-slim@sha256:a0196893dffad1f1a5723a8c817b45681402be549a8f196bf9c93a5bc30628e3
+FROM node:22-slim@sha256:4b44c32c9f3118d60977d0dde5f758f63c4f9eac8ddee4275277239ec600950f
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app/ /usr/src/app/
 COPY . .
